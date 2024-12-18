@@ -1,4 +1,4 @@
-mod commands;
-mod events;
-mod messages;
-mod stats;
+pub mod commands;
+pub mod events;
+pub mod messages;
+pub mod stats;
