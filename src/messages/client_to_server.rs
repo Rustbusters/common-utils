@@ -5,7 +5,9 @@ use wg_2024::network::NodeId;
 #[derive(Clone, Debug, Serialize, Deserialize)]
 #[serde(tag = "type")]
 pub enum MessageToServer {
-    Register,
+    Register {
+        name: String,
+    },
     Unregister,
 
     GetActiveUsers,
