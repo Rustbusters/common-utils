@@ -12,7 +12,6 @@ pub trait HostMessage: Clone + std::fmt::Debug + Serialize + for<'de> Deserializ
 #[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct MessageBody {
     pub src: NodeId,
-    pub dst: u8,
     pub message: MessageContent,
     pub timestamp: String,
 }
