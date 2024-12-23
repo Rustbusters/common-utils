@@ -22,7 +22,7 @@ pub enum MessageToServer {
     },
 
     SendToUser {
-        dst: NodeId,
+        user_id: NodeId,
         message: MessageBody,
     },
     SendToGroup {
