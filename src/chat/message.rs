@@ -1,10 +1,10 @@
-use serde::{Serialize, Deserialize};
+use serde::{Deserialize, Serialize};
 
 use crate::user::UserId;
-use crate::group::{GroupId, GroupName, Group};
 
 // Host Messages sent to Simulation Controller
-#[derive(Debug)]
+#[derive(Clone, Debug, Serialize, Deserialize)]
+#[serde(tag = "type", content = "message")]
 pub enum HostMessage {
     FromClient(ClientToServerMessage),
     FromServer(ServerToClientMessage),
@@ -27,56 +27,38 @@ pub enum MessageContent {
 
 // Client -> Server messages
 #[derive(Clone, Debug, Serialize, Deserialize)]
-#[serde(tag = "type")]
+#[serde(tag = "request")]
 pub enum ClientToServerMessage {
-    RegisterUser(String),
+    RegisterUser {
+        name: String,
+    },
     UnregisterUser,
 
     RequestActiveUsers,
 
-    CreateGroup {
-        group_name: GroupName,
-        members: Vec<UserId>,
-    },
-    SearchGroupByName(GroupName),
-    JoinGroup(GroupId),
-
     SendPrivateMessage {
         recipient_id: UserId,
-        message: MessageBody,
-    },
-    SendGroupMessage {
-        group_id: GroupId,
         message: MessageBody,
     },
 }
 
 // Server -> Client messages
 #[derive(Clone, Debug, Serialize, Deserialize)]
-#[serde(tag = "type")]
+#[serde(tag = "response")]
 pub enum ServerToClientMessage {
     RegistrationSuccess,
     RegistrationFailure,
 
-    ActiveUsersList(Vec<UserId>),
-
-    GroupCreated(GroupId),
-    GroupDetails(Group), 
-    UserJoinedGroup {
-        group_id: GroupId,
-        user_id: UserId,
+    ActiveUsersList {
+        users: Vec<UserId>,
     },
 
     PrivateMessage {
         sender_id: UserId,
         message: MessageBody,
     },
-    GroupMessage {
-        group_id: GroupId,
-        sender_id: UserId,
-        message: MessageBody,
-    },
 
-    UserNotFound(UserId),
-    GroupNotFound(GroupName),
+    UserNotFound {
+        user_id: UserId,
+    },
 }
