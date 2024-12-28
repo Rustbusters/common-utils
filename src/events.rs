@@ -1,11 +1,11 @@
 use crate::stats::Stats;
-use crate::HostMessage;
+use crate::chat::message::HostMessage;
 use wg_2024::packet::Packet;
 
-#[derive(Debug, Clone)]
-pub enum HostEvent<T: HostMessage, U: HostMessage> {
-    MessageSent(T),
-    MessageReceived(U),
+#[derive(Debug)]
+pub enum HostEvent {
+    HostMessageSent(HostMessage),
+    HostMessageReceived(HostMessage),
     StatsResponse(Stats),
     ControllerShortcut(Packet),
 }
