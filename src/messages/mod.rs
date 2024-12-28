@@ -1,5 +1,5 @@
-mod client_to_server;
-mod server_to_client;
+pub mod client_to_server;
+pub mod server_to_client;
 
 use serde::{Deserialize, Serialize};
 use wg_2024::network::NodeId;
