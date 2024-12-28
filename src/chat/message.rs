@@ -1,4 +1,3 @@
-
 use serde::{Serialize, Deserialize};
 
 use crate::user::UserId;
@@ -7,8 +6,8 @@ use crate::group::{GroupId, GroupName, Group};
 // Host Messages sent to Simulation Controller
 #[derive(Debug)]
 pub enum HostMessage {
+    FromClient(ClientToServerMessage),
     FromServer(ServerToClientMessage),
-    FromClient(ClientToServerMessage)
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
