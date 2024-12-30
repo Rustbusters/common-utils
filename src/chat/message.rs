@@ -13,7 +13,7 @@ pub enum HostMessage {
 #[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct MessageBody {
     pub sender_id: UserId,
-    pub message: MessageContent,
+    pub content: MessageContent,
     pub timestamp: String,
 }
 
@@ -22,7 +22,6 @@ pub struct MessageBody {
 pub enum MessageContent {
     Text(String),
     Image(Vec<u8>),
-    Audio(Vec<u8>),
 }
 
 // Client -> Server messages
