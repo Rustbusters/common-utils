@@ -1,6 +1,6 @@
-use serde::{Deserialize, Serialize};
-
 use crate::user::UserId;
+use crate::User;
+use serde::{Deserialize, Serialize};
 
 // Host Messages sent to Simulation Controller
 #[derive(Clone, Debug, Serialize, Deserialize)]
@@ -52,7 +52,7 @@ pub enum ServerToClientMessage {
     UnregisterFailure,
 
     ActiveUsersList {
-        users: Vec<UserId>,
+        users: Vec<User>,
     },
 
     PrivateMessage {
