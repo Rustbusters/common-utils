@@ -48,6 +48,9 @@ pub enum ServerToClientMessage {
     RegistrationSuccess,
     RegistrationFailure,
 
+    UnregisterSuccess,
+    UnregisterFailure,
+
     ActiveUsersList {
         users: Vec<UserId>,
     },
