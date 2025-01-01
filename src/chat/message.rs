@@ -21,7 +21,8 @@ pub struct MessageBody {
 #[serde(tag = "type", content = "data")]
 pub enum MessageContent {
     Text(String),
-    Image(Vec<u8>),
+    // base64 encoded image
+    Image(String),
 }
 
 // Client -> Server messages
