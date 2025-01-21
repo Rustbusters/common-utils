@@ -55,6 +55,13 @@ pub enum ServerToClientMessage {
     ActiveUsersList {
         users: Vec<User>,
     },
+    NewUserRegistered {
+        id: UserId,
+        name: String,
+    },
+    UserUnregistered {
+        id: UserId,
+    },
 
     PrivateMessage {
         sender_id: UserId,
