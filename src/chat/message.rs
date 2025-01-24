@@ -71,4 +71,9 @@ pub enum ServerToClientMessage {
     UserNotFound {
         user_id: UserId,
     },
+
+    // Error only client side (not for server)
+    SendingError {
+        message: String,
+    },
 }
