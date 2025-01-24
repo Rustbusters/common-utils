@@ -74,6 +74,7 @@ pub enum ServerToClientMessage {
 
     // Error only client side (not for server)
     SendingError {
-        message: String,
+        error: String,
+        message: ClientToServerMessage,
     },
 }
