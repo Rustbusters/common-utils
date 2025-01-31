@@ -47,10 +47,14 @@ pub enum ClientToServerMessage {
 #[serde(tag = "response")]
 pub enum ServerToClientMessage {
     RegistrationSuccess,
-    RegistrationFailure,
+    RegistrationFailure {
+        reason: String,
+    },
 
     UnregisterSuccess,
-    UnregisterFailure,
+    UnregisterFailure {
+        reason: String,
+    },
 
     ActiveUsersList {
         users: Vec<User>,
