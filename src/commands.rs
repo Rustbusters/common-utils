@@ -9,4 +9,5 @@ pub enum HostCommand {
     StatsRequest,
     AddSender(NodeId, Sender<Packet>),
     RemoveSender(NodeId),
+    Stop,
 }
