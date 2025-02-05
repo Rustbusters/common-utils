@@ -6,7 +6,6 @@ use wg_2024::packet::Packet;
 pub enum HostCommand {
     SendRandomMessage(NodeId),
     DiscoverNetwork,
-    StatsRequest,
     AddSender(NodeId, Sender<Packet>),
     RemoveSender(NodeId),
     Stop,
