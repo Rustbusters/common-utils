@@ -12,7 +12,6 @@ pub enum PacketTypeHeader {
     #[default]
     MsgFragment,
     Ack,
-    Nack,
     FloodRequest,
     FloodResponse,
 }
